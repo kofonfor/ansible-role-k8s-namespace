@@ -1,0 +1,8 @@
+- name: check if a namespace called "{{ k8s_namespace }}" exists
+  shell: kubectl get namespace {{ k8s_namespace }}
+  ignore_errors: yes
+  register: result
+
+- name: create a namespace called "{{ k8s_namespace }}"
+  shell: kubectl create namespace {{ k8s_namespace }}
+  when: result|failed
