@@ -6,4 +6,4 @@
 
 - name: create a namespace called "{{ k8s_namespace }}"
   shell: export KUBECONFIG=/etc/kubernetes/admin.conf && kubectl create namespace {{ k8s_namespace }}
-  when: result|failed
+  when: result is failed
